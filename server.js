@@ -28,6 +28,11 @@ var server = http.createServer(function (request, response) {
         <h1>你好</h1>
         `)
         response.end()
+    } else if (path === '/index.html') {
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'text/html;charset=utf-8')
+        response.write(fs.readFileSync('public/index.html'))
+        response.end()
     } else if (path === '/style.css') {
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/css;charset=utf-8')
